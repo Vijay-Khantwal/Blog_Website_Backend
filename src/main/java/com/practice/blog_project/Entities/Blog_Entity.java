@@ -1,9 +1,11 @@
 package com.practice.blog_project.Entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -15,6 +17,7 @@ public class Blog_Entity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotNull
     private Integer user_id;
 
     @Size(min=3,message = "Title too Short")
@@ -24,5 +27,5 @@ public class Blog_Entity {
     @Size(max = 2000,message = "Size limit exceeded")
     private String content;
 
-    private Date date;
+    private LocalDateTime dateTime;
 }

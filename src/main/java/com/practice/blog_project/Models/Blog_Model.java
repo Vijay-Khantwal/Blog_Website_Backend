@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.BatchSize;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -23,5 +24,5 @@ public class Blog_Model {
     @Size(max = 2000,message = "Size limit exceeded")
     private String content;
 
-    private Date date;
+    private LocalDateTime dateTime;
 }
