@@ -86,4 +86,27 @@ public class Blog_Service_Impl implements Blog_Service{
         return null;
     }
 
+    public List<Blog_Entity> searchByTitle(String match,Integer pageNo, Integer pageSize){
+        Pageable paging = PageRequest.of(pageNo,pageSize);
+        Page<Blog_Entity> pagedResult = blogRepository.searchBlogByTitle(match,paging);
+        if(pagedResult.hasContent()){
+            return pagedResult.getContent();
+        }
+        else{
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public List<Blog_Entity> searchByDes(String match, Integer pageNo, Integer pageSize) {
+        Pageable paging = PageRequest.of(pageNo,pageSize);
+        Page<Blog_Entity> pagedResult = blogRepository.searchBlogByDes(match,paging);
+        if(pagedResult.hasContent()){
+            return pagedResult.getContent();
+        }
+        else{
+            return new ArrayList<>();
+        }
+    }
+
 }

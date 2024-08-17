@@ -13,8 +13,11 @@ public interface Blog_Service {
     List<Blog_Entity> getBlogOfUser(Integer user_id,Integer pageNo,Integer pageSize);
     List<Blog_Entity> getAllBlogs(Integer pageNo,Integer pageSize);
     Blog_Entity createBlog(Blog_Entity blog);
-
     Blog_Entity deleteBlogById(Integer id);
     Blog_Entity updateBlog(Integer id,Blog_Entity updated_blog);
+
+    List<Blog_Entity> searchByTitle(String match,Integer pageNo,Integer pageSize);
+    List<Blog_Entity> searchByDes(String match,Integer pageNo,Integer pageSize);
+
 
 }
