@@ -71,4 +71,22 @@ public class Blog_Controller {
         }
     }
 
+    @GetMapping("/searchTitle/{match}")
+    public List<Blog_Entity> search_By_Title(
+            @PathVariable String match,
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize
+    ){
+        return blogService.searchByTitle(match,pageNo,pageSize);
+    }
+
+    @GetMapping("/searchDes/{match}")
+    public List<Blog_Entity> search_By_Des(
+            @PathVariable String match,
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize
+    ){
+        return blogService.searchByDes(match,pageNo,pageSize);
+    }
+
 }

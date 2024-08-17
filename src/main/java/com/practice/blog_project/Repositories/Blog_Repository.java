@@ -15,4 +15,10 @@ public interface Blog_Repository extends JpaRepository<Blog_Entity,Integer> {
 
     @Query("SELECT b FROM Blog_Entity b where b.user_id = :user_id")
     Page<Blog_Entity> getBlogsOfUser(@Param("user_id") Integer user_id, Pageable pageable);
+
+    @Query("SELECT b FROM Blog_Entity b where b.title like %:match%")
+    Page<Blog_Entity> searchBlogByTitle(@Param("match") String match,Pageable pageable);
+
+    @Query("SELECT b FROM Blog_Entity b where b.content like %:match%")
+    Page<Blog_Entity> searchBlogByDes(@Param("match") String match,Pageable pageable);
 }
