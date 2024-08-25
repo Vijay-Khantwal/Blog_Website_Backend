@@ -1,8 +1,9 @@
-package com.practice.blog_project.Services;
+package com.backend.blog_project.Services;
 
-import com.practice.blog_project.Entities.Blog_Entity;
-import com.practice.blog_project.Repositories.Blog_Repository;
-import org.springframework.beans.BeanUtils;
+import com.backend.blog_project.Entities.Blog_Entity;
+import com.backend.blog_project.Models.User_Model;
+import com.backend.blog_project.Repositories.Blog_Repository;
+import com.backend.blog_project.Repositories.User_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,10 +21,18 @@ public class Blog_Service_Impl implements Blog_Service{
     @Autowired
     Blog_Repository blogRepository;
 
+    @Autowired
+    User_Repository userRepository;
+
     @Override
     public Blog_Entity createBlog(Blog_Entity blog) {
         blog.setDateTime(LocalDateTime.now());
         blogRepository.save(blog);
+
+        int id = blog.getUser_id();
+        User_Model publisher = userRepository.findById(id).get();
+        publisher.setNumberOfBlogs(publisher.getNumberOfBlogs() + 1 );
+        userRepository.save(publisher);
         return blog;
     }
 
@@ -66,7 +75,13 @@ public class Blog_Service_Impl implements Blog_Service{
     public Blog_Entity deleteBlogById(Integer id) {
         if(blogRepository.existsById(id)){
             Blog_Entity  existing= blogRepository.findById(id).get();
+            int userId = existing.getUser_id();
+            User_Model user = userRepository.findById(userId).get();
+            user.setNumberOfBlogs(user.getNumberOfBlogs()-1);
             blogRepository.deleteById(id);
+            userRepository.save(user);
+
+
             return existing ;
         }
         else{

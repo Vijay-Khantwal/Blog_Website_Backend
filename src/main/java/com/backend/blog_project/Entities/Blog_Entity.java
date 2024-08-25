@@ -1,4 +1,4 @@
-package com.practice.blog_project.Entities;
+package com.backend.blog_project.Entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

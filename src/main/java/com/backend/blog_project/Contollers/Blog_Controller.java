@@ -1,11 +1,8 @@
-package com.practice.blog_project.Contollers;
+package com.backend.blog_project.Contollers;
 
 
-import com.practice.blog_project.Entities.Blog_Entity;
-import com.practice.blog_project.Models.Blog_Model;
-import com.practice.blog_project.Repositories.Blog_Repository;
-import com.practice.blog_project.Services.Blog_Service;
-import org.springframework.beans.BeanUtils;
+import com.backend.blog_project.Entities.Blog_Entity;
+import com.backend.blog_project.Services.Blog_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

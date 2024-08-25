@@ -1,9 +1,6 @@
-package com.practice.blog_project.Services;
+package com.backend.blog_project.Services;
 
-import com.practice.blog_project.Entities.Blog_Entity;
-import com.practice.blog_project.Models.Blog_Model;
-import org.springframework.beans.BeanUtils;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.backend.blog_project.Entities.Blog_Entity;
 
 import java.util.List;
 
