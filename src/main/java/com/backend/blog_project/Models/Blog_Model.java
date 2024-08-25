@@ -1,4 +1,4 @@
-package com.practice.blog_project.Models;
+package com.backend.blog_project.Models;
 
 
 import jakarta.validation.constraints.Size;
